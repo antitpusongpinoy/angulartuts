@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid grey;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	table tr:nth-child(odd) {
+	  background-color: #f1f1f1;
+	}
+	table tr:nth-child(even) {
+	  background-color: #ffffff;
+	}
+</style>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<table border="1">
+	<tr ng-repeat="x in content | orderBy: 'Country'">
+		<td>{{$index + 1}}</td>
+		<td>{{x.Name | uppercase}}</td>
+		<td>{{x.Country}}</td>
+	</tr>
+</table>
+</div>
+
+<p>The $interval service runs a function every specified millisecond.</p>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http({
+  	method: "GET",
+  	url: "customers.php"
+  }).then(function mySuccess(response){
+  	 // First function handles success
+  	$scope.content = response.data.records;
+  }, function myError(response){
+  	 // First function handles errors
+  	//$scope.status = response.status;
+  	// $scope.content = response.statusText;
+  });
+});
+</script>
+
+</body>
+</html>

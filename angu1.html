@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title></title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	First name: <input type="text" name="" ng-model="firstName"> <br>
+	Last name: <input type="text" name="" ng-model="lastName"> <br>
+
+	Full name: {{ metodkoto() }}
+</div>
+<script type="text/javascript">
+	
+	var app = angular.module("myApp", []);
+
+	app.controller("myCtrl", myfunc)
+
+	function myfunc($scope){
+		$scope.firstName = "Francis";
+		$scope.lastName = "Fernandez";
+
+		$scope.metodkoto = function(){
+			return $scope.firstName + " " + $scope.lastName;
+		}
+	}
+</script>
+</body>
+</html>

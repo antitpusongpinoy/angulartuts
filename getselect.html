@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid grey;
+		border-collapse: collapse;
+		padding: 5px;
+	}
+	table tr:nth-child(odd) {
+	  background-color: #f1f1f1;
+	}
+	table tr:nth-child(even) {
+	  background-color: #ffffff;
+	}
+</style>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<select ng-model="selectedData">
+	<option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
+</select>
+you select: {{selectedData}}
+you select color: {{selectedData.color}}
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+	app.controller('myCtrl', myfunc);
+	function myfunc($scope, $http){
+		$scope.cars = [
+		{model: "Ford Mustang", color: "red"},
+		{model: "Fiat 500", color: "white"},
+		{model: "Volvo XC90", color: "yellow"}
+		]
+	}
+</script>
+
+</body>
+</html>

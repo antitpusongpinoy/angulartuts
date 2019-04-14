@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<p ng-click="showMessage()">click</p>
+<p ng-mouseenter="showMessage()">mouseenter</p>
+<br>
+<button type="button" ng-click="hideFunc()">Click me!</button>
+<div ng-show="showMe">
+	<h1>Menu:</h1>
+	<div>Pizza</div>
+    <div>Pasta</div>
+    <div>Pesce</div>
+</div>
+
+</div>
+
+
+
+<script>
+var app = angular.module('myApp', []);
+	app.controller('myCtrl', myfunc);
+	function myfunc($scope, $http){
+		$scope.showMe = false;
+
+		$scope.showMessage = function(){
+			alert('potang ina ka');
+			console.log('potang ina ka');
+		}
+
+		//when button clicked, this function will triggered
+		$scope.hideFunc = function(){
+			$scope.showMe = !$scope.showMe;
+		}
+	}
+</script>
+
+
+</body>
+</html>

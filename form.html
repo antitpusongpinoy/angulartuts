@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+<label for="firstname"></label>
+<input type="text" name="firstname" ng-model="message"><br>
+YOu entered: {{toUpper(message)}}
+
+<br><br>
+<form>
+	 Check to show a header:
+	 <input type="checkbox" name="box" ng-model="myVar">
+</form>
+<h1 ng-show="myVar">My Header</h1>
+
+
+<br><br>
+<form>
+	 Select A topic:
+	 <select ng-model="myVar2">
+	 	<option value="">
+		<option value="dogs">Dogs
+	    <option value="tuts">Tutorials
+	    <option value="cars">Cars
+	 </select>
+</form>
+<div ng-switch="myVar2">
+	<div ng-switch-when="dogs">
+		<h1>Dogs</h1>
+     	<p>Welcome to a world of dogs.</p>
+	</div>
+	<div ng-switch-when="tuts">
+		<h1>tuts</h1>
+     	<p>Welcome to a world of tuts.</p>
+	</div>
+	<div ng-switch-when="cars">
+		<h1>cars</h1>
+     	<p>Welcome to a world of cars.</p>
+	</div>
+</div>
+</div>
+
+
+
+<script>
+var app = angular.module('myApp', []);
+	app.controller('myCtrl', myfunc);
+	$scope.myVar = false;
+	function myfunc($scope, $http){
+		$scope.message = 'francis';
+			
+		$scope.unCheck = function(){
+			$scope.myVar = !$scope.myVar;
+		}	
+		$scope.toUpper = function(string){
+			return angular.uppercase(string);
+		}
+	}
+
+
+</script>
+
+
+</body>
+</html>

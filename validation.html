@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+	<p>Try writing in the input field:</p>
+	<form name="myForm">
+		<p>Full name:</p>
+		<input type="text" name="inputkoto" ng-model="myInput" required><br>
+			<span ng-show="myForm.inputkoto.$error.required">No value!</span><br>
+			<span ng-show="!myForm.inputkoto.$error.required">Good boy!</span><br>
+		<p>Enter email:</p>
+		<input type="email" name="emailkoto" ng-model="myEmail" required><br>
+			<span ng-show="myForm.emailkoto.$error.required">No value!</span><br>
+			<span ng-show="myForm.emailkoto.$valid">No value!</span><br>
+			<span ng-show="!myForm.emailkoto.$error.required">Good boy!</span><br>
+			<button type="submit">submit</button>
+	</form>
+			
+</div>
+
+
+
+<script>
+var app = angular.module('myApp', []);
+	app.controller('myCtrl', myfunc);
+	function myfunc($scope, $http){
+		$scope.myVar = false;
+		//$scope.myInput = 'hey';
+	}
+
+</script>
+
+
+</body>
+</html>
